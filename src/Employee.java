@@ -22,7 +22,7 @@ public class Employee {
 	}
 	
 	private static void removeEmployee(Employee employee) {
-		extent.remove(employee);
+		extent.remove(employee); 
 	}
 	
 	public static void showExtent() {
