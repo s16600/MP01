@@ -1,7 +1,11 @@
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee {
+public class Employee implements Serializable {
 	
 	private static List<Employee> extent = new ArrayList<>();
 	
@@ -32,6 +36,14 @@ public class Employee {
 			System.out.println(employee);
 		}
 	
+	}
+	
+	public static void writeExtent(ObjectOutputStream stream) throws IOException {
+		stream.writeObject(extent);
+	}
+	
+	public static void readExtent(ObjectInputStream stream) throws IOException, ClassNotFoundException {
+		extent = (ArrayList<Employee>) stream.readObject();
 	}
 	
 	public String toString() {
