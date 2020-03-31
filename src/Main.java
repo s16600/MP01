@@ -7,6 +7,10 @@ public class Main {
 		
 		//System.out.println(new Date());
 		
+		Employee e1 = new Employee("Jan", "Kowalski", "Laborant");
+		Employee e2 = new Employee("Piotr", "Nowak", "Analityk");
+		
+		Employee.showExtent();
 		
 		System.out.println("Koniec programu");
 	}
