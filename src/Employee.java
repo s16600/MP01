@@ -5,9 +5,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee implements Serializable {
+public class Employee extends MyExtension implements Serializable {
 	
-	private static List<Employee> extent = new ArrayList<>();
+	//private static List<Employee> extent = new ArrayList<>();
 	
 	String name;
 	String surname;
@@ -18,9 +18,11 @@ public class Employee implements Serializable {
 		this.surname=surname;
 		this.position=position;
 		
-		addEmployee(this);
+		//addEmployee(this);
+		//add(this);
 	}
-	
+
+/*
 	private static void addEmployee(Employee employee) {
 		extent.add(employee);
 	}
@@ -45,8 +47,9 @@ public class Employee implements Serializable {
 	public static void readExtent(ObjectInputStream stream) throws IOException, ClassNotFoundException {
 		extent = (ArrayList<Employee>) stream.readObject();
 	}
-	
+*/	
 	public String toString() {
 		return name + " " + surname + ", " + position; 
 	}
+
 }

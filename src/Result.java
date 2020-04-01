@@ -1,4 +1,4 @@
 
-public abstract class Result {
+public abstract class Result extends MyExtension {
 
 }
