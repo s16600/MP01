@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +22,10 @@ public /*abstract*/ class Sample extends MyExtension {
 		return nrProby + ", " + nrSerii + ". Wykonał ocenę: " + wykonalOcene; 
 	}	
 	
+	public Sample() {
+		this.results = new ArrayList<>();
+	}
+	
 	public Sample(String nrProby, String nrSerii, String nazwaProby, Date dataPoboru, Date dataProdukcji, Date dataWaznosci, Date dataOceny, 
 			Employee wykonalOcene, Date dataZwolnienia, Employee wykonalZwolnienie) {
 		this.nrProby = nrProby;
@@ -30,6 +35,7 @@ public /*abstract*/ class Sample extends MyExtension {
 		this.dataPoboru = dataPoboru;
 		this.dataProdukcji = dataProdukcji;
 		this.dataWaznosci = dataWaznosci;
+		this.results = new ArrayList<>();
 		this.dataOceny = dataOceny;
 		this.wykonalOcene = wykonalOcene;
 		this.dataZwolnienia = dataZwolnienia;

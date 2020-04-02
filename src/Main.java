@@ -13,11 +13,8 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
-		// TODO Auto-generated method stub
 		
-		//System.out.println(new Date());
-		
-		System.out.println("Podaj, co chcesz zrobi�: \n"
+		System.out.println("Podaj, co chcesz zrobić: \n"
 				+ "Utworzyć ekstensję i zapisać w pliku, wpisz - 1\n"
 				+ "Odczytać ekstensję z pliku, wpisz - 2\n"
 				+ "Zakończyć program, wpisz inną liczbę\n");
@@ -25,7 +22,6 @@ public class Main {
 		int polecenie;
 		Scanner konsola = new Scanner(System.in);
 		polecenie = Integer.parseInt(konsola.next());
-		//System.out.println("Polecenie: "+polecenie);
 		
 		File extentFile;
 		
@@ -46,9 +42,10 @@ public class Main {
 				break;
 		}
 		
-		Employee.showExtent();		
+		//Employee.showExtent();
+		Sample.showExtent();
 		
-		System.out.println("Koniec programu");
+		System.out.println("\n*** Koniec programu ***");
 	}
 
 	
@@ -61,6 +58,10 @@ public class Main {
 		//		Employee wykonalOcene, Date dataZwolnienia, Employee wykonalZwolnienie)
 		
 		Sample s1 = new Sample("ZS/2009/001", "A2005/123A", "Witamina D3", new Date(), new Date(), new Date(), new Date(), e2, new Date(), e3);
+		//s1.addResult(new Result());
+		
+		s1.addResult(new Result());
+		new Result();
 		
 	}
 }

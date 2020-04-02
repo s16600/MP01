@@ -9,5 +9,7 @@ public /*abstract*/ class Result extends MyExtension {
 	Employee checkedBy; 
 	String comments;
 	
-	
+	public String toString() {
+		return resultNumber + ", " + checkDate + ". Sprawdził: " + checkedBy; 
+	}
 }
