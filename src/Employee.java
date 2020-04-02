@@ -1,11 +1,6 @@
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-public class Employee extends MyExtension implements Serializable {
+public class Employee extends MyExtension /*implements Serializable*/ {
 	
 	//private static List<Employee> extent = new ArrayList<>();
 	
@@ -21,6 +16,10 @@ public class Employee extends MyExtension implements Serializable {
 		//addEmployee(this);
 		//add(this);
 	}
+	
+	public String toString() {
+		return name + " " + surname + ", " + position; 
+	}	
 
 /*
 	private static void addEmployee(Employee employee) {
@@ -48,8 +47,6 @@ public class Employee extends MyExtension implements Serializable {
 		extent = (ArrayList<Employee>) stream.readObject();
 	}
 */	
-	public String toString() {
-		return name + " " + surname + ", " + position; 
-	}
+
 
 }
