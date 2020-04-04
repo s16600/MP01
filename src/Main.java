@@ -32,8 +32,7 @@ public class Main {
 				ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(extentFile)));
 				Employee.writeExtent(out);
 				out.close();
-				break;
-				
+				break; 
 			case 2:
 				extentFile = new File("Plik1.obj");
 				ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(extentFile)));
@@ -43,7 +42,8 @@ public class Main {
 		}
 		
 		//Employee.showExtent();
-		Sample.showExtent();
+		//System.out.println(new Sample().getClass());
+		Sample.showExtent(new Employee("","","").getClass());
 		
 		System.out.println("\n*** Koniec programu ***");
 	}
@@ -58,7 +58,6 @@ public class Main {
 		//		Employee wykonalOcene, Date dataZwolnienia, Employee wykonalZwolnienie)
 		
 		Sample s1 = new Sample("ZS/2009/001", "A2005/123A", "Witamina D3", new Date(), new Date(), new Date(), new Date(), e2, new Date(), e3);
-		//s1.addResult(new Result());
 		
 		s1.addResult(new Result());
 		new Result();

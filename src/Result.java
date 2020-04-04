@@ -10,6 +10,6 @@ public /*abstract*/ class Result extends MyExtension {
 	String comments;
 	
 	public String toString() {
-		return resultNumber + ", " + checkDate + ". Sprawdził: " + checkedBy; 
+		return resultNumber + ", " + checkDate + ". Sprawdził: " + checkedBy /*+ ", klasa:" + this.getClass()*/; 
 	}
 }
