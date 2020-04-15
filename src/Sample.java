@@ -11,15 +11,24 @@ public /*abstract*/ class Sample extends MyExtension {
 	Date dataProdukcji;
 	Date dataWaznosci;
 	List<Result> results;
-	public enum Ocena {Odpowiada, Odpowiada_w_przebadanych_parametrach, Nie_odpowiada};
+	Ocena ocena;
 	Date dataOceny;
 	Employee wykonalOcene;
-	public enum Status {Zwolniona, Odrzucona}; 
+	Status status;
 	Date dataZwolnienia;
 	Employee wykonalZwolnienie;
 	
+	public enum Ocena {Brak, Odpowiada, Odpowiada_w_przebadanych_parametrach, Nie_odpowiada};
+	public enum Status {Brak, Zwolniona, Odrzucona}; 
+	
 	public String toString() {
-		return nrProby + ", " + nrSerii + ". Wykonał ocenę: " + wykonalOcene; 
+		String text = "Sample: " + nrProby + ", " + nrSerii + ", evaluated by: " + wykonalOcene +"\n";
+		
+		for (Result result : results) {
+			text += " - " + result.toString() +"\n";
+		}
+		
+		return text;
 	}	
 	
 	public Sample() {
@@ -36,8 +45,10 @@ public /*abstract*/ class Sample extends MyExtension {
 		this.dataProdukcji = dataProdukcji;
 		this.dataWaznosci = dataWaznosci;
 		this.results = new ArrayList<>();
+		this.ocena = Sample.Ocena.Brak;
 		this.dataOceny = dataOceny;
 		this.wykonalOcene = wykonalOcene;
+		this.status = Sample.Status.Brak;
 		this.dataZwolnienia = dataZwolnienia;
 		this.wykonalZwolnienie = wykonalZwolnienie;
 	}

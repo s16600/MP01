@@ -31,7 +31,7 @@ public abstract class MyExtension implements Serializable {
 			extent = new ArrayList();
 			allExtents.put(theClass, extent);
 		}
-		extent.add(this);
+		extent.add(this); 
 	}
 	
 	/*
@@ -70,6 +70,17 @@ public abstract class MyExtension implements Serializable {
 		else {
 			System.out.println("Brak klasy: "+theClass.toString());
 		}
+	}
+	
+	public static <T> List<T> getExtent(Class theClass) {
+		List<MyExtension> extent = null;
+		if (allExtents.containsKey(theClass)) {
+			extent = allExtents.get(theClass);
+		}
+		else {
+			System.out.println("Brak klasy: "+theClass.toString());
+		}
+		return (List<T>) extent;
 	}
 	
 	/*

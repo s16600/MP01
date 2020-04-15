@@ -5,7 +5,7 @@ public /*abstract*/ class Measurement extends MyExtension {
 	Date masurmentDate; 
 	
 	public String toString() {
-		return masurmentDate + ", Wykonał: " + masurementDoneBy; 
+		return "Measurement: " + masurmentDate.toLocaleString() + ", by: " + masurementDoneBy; 
 	}
 	
 	Measurement(Employee masurementDoneBy, Date masurmentDate) {

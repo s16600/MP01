@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -41,26 +42,59 @@ public class Main {
 				break;
 		}
 		
-		//Employee.showExtent();
-		//System.out.println(new Sample().getClass());
-		Sample.showExtent(new Employee("","","").getClass());
+		System.out.println("Lista pracowników:");
+		Employee.showExtent(Employee.class);
+		System.out.println("Suma wynagrodzeń: " + Employee.sumSalary() +"\n");
+		System.out.println("Lista prób:");
+		Sample.showExtent(Sample.class);
+		
+		//Result.showExtent(Result.class);
+		//Measurement.showExtent(Measurement.class);
 		
 		System.out.println("\n*** Koniec programu ***");
 	}
 
 	
 	public static void utworzEkstensje() {
-		Employee e1 = new Employee("Jan", "Kowalski", "Laborant");
-		Employee e2 = new Employee("Piotr", "Nowak", "Analityk");
-		Employee e3 = new Employee("Tomasz", "Nicpoń", "Kierownik");
+		Employee e1 = new Employee("Jan", "Kowalski", "Laborant", 100);
+		Employee e2 = new Employee("Piotr", "Nowak", "Analityk", 50);
+		Employee e3 = new Employee("Tomasz", "Nicpoń", "Kierownik", 200);
+		
+		Measurement m1 = new MeasurementNumerical(e1, new Date(), 5.51D);
+		Measurement m2 = new MeasurementNumerical(e1, new Date(), 5.00D);
+		Measurement m3 = new Measurement(e1, new Date());
+		Measurement m4 = new Measurement(e1, new Date());
+		Measurement m5 = new Measurement(e1, new Date());
+		Measurement m6 = new Measurement(e2, new Date());
+		Measurement m7 = new Measurement(e2, new Date());
+		Measurement m8 = new Measurement(e2, new Date());
+		Measurement m9 = new Measurement(e2, new Date());
+		Measurement m10 = new Measurement(e2, new Date());
+		
+		//public Result(Integer resultNumber, Date checkDate, Employee checkedBy, String comments)
+		Result r1 = new ResultAssay(1,new Date(), e2, "");
+		Result r2 = new Result(2,new Date(), e2, "");
+		Result r3 = new Result(3,new Date(), e2, "");
+		Result r4 = new Result(1,new Date(), e2, "");
+		Result r5 = new Result(2,new Date(), e2, "");
+		
+		r1.addMeasurement(m1);
+		r1.addMeasurement(m2);
+		r3.addMeasurement(m3);
+		r5.addMeasurement(m10);
+		
 		
 		//Sample(String nrProby, String nrSerii, String nazwaProby, Date dataPoboru, Date dataProdukcji, Date dataWaznosci, Date dataOceny, 
 		//		Employee wykonalOcene, Date dataZwolnienia, Employee wykonalZwolnienie)
 		
 		Sample s1 = new Sample("ZS/2009/001", "A2005/123A", "Witamina D3", new Date(), new Date(), new Date(), new Date(), e2, new Date(), e3);
+		Sample s2 = new Sample("ZS/2009/002", "A2005/124A", "Witamina B1", new Date(), new Date(), new Date(), new Date(), e3, new Date(), e3);
 		
-		s1.addResult(new Result());
-		new Result();
+		s1.addResult(r1);
+		s1.addResult(r2);
+		s1.addResult(r3);
+		s2.addResult(r4);
+		s2.addResult(r5);
 		
 	}
 }
