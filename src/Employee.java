@@ -45,6 +45,21 @@ public class Employee extends MyExtension /*implements Serializable*/ {
 		
 		return res;
 	}
+	
+	//Przeciążenie, Employee sumSalary
+	public static Integer sumSalary(String position) {
+		Integer res = 0;
+		List<Employee> employees = null; 
+
+		// DOKOŃCZYĆ i koniec programu
+		for (Object emp : Employee.getExtent(Employee.class)) {
+			if ( ((Employee) emp).position.equals(position) ) res += ((Employee) emp).salary;
+			//res = res.add( ((Employee) emp).salary );
+			//System.out.println(emp.toString());
+		}
+		
+		return res;
+	}
 
 	
 /*

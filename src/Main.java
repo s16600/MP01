@@ -7,9 +7,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Scanner;
+
+//Ekstensja i trwałość MyExtension
+//A. złożony Employee
+//A. opcjonalny, Result comments
+//A. powtarzalny, Result <measurements> 
+//A. klasowy, ResultAssay accuracy
+//A. pochodny,ResultAssay.getValue(); 
+//Met. klasowa Employee.sumSalary();
+//Przeciążenie, Employee sumSalary
+//Przesłonięcie toString() ResultAssay
 
 public class Main {
 
@@ -57,7 +66,7 @@ public class Main {
 	
 	public static void utworzEkstensje() {
 		Employee e1 = new Employee("Jan", "Kowalski", "Laborant", 100);
-		Employee e2 = new Employee("Piotr", "Nowak", "Analityk", 50);
+		Employee e2 = new Employee("Piotr", "Nowak", "Analityk", 150);
 		Employee e3 = new Employee("Tomasz", "Nicpoń", "Kierownik", 200);
 		
 		Measurement m1 = new MeasurementNumerical(e1, new Date(), 5.51D);
