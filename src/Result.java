@@ -13,7 +13,9 @@ public /*abstract*/ class Result extends MyExtension {
 	public enum Checked {Yes, No};
 	
 	public String toString() {
-		String text = "Result: " + resultNumber + ", checked by: " + checkedBy + "\n"/*+ ", klasa:" + this.getClass()*/;
+		//String text = "Result: " + resultNumber + ", checked by: " + checkedBy + "\n"/*+ ", klasa:" + this.getClass()*/;
+		
+		String text = "Result: " + resultNumber + ", checked by: " + checkedBy + ((comments!=null)? " ("+comments +")":"") + "\n";
 		
 		for(Measurement measurement : measurements) {
 			text += "   -- " + measurement +"\n";

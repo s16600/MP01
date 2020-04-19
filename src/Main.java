@@ -81,9 +81,9 @@ public class Main {
 		Measurement m10 = new Measurement(e2, new Date());
 		
 		//public Result(Integer resultNumber, Date checkDate, Employee checkedBy, String comments)
-		Result r1 = new ResultAssay(1,new Date(), e2, "");
-		Result r2 = new Result(2,new Date(), e2, "");
-		Result r3 = new Result(3,new Date(), e2, "");
+		Result r1 = new ResultAssay(1,new Date(), e2, "komentarz");
+		Result r2 = new Result(2,new Date(), e2);
+		Result r3 = new Result(3,new Date(), e2, "komentarz");
 		Result r4 = new Result(1,new Date(), e2, "");
 		Result r5 = new Result(2,new Date(), e2, "");
 		
