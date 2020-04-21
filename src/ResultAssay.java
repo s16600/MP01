@@ -9,7 +9,8 @@ public class ResultAssay extends Result {
 	}
 	
 	public String toString() {
-		String text = "No " + resultNumber + ", ASSAY: " + roundAvoid(getValue(),accuracy) + ", checked by: " + checkedBy + "\n";
+		String text = "No " + resultNumber + ", ASSAY: " + roundAvoid(getValue(),accuracy) 
+					+ ", checked by: " + checkedBy + ((comments!=null)? " ("+comments +")":"") + "\n";
 		
 		for(Measurement measurement : measurements) {
 			text += "   -- " + measurement +"\n";

@@ -25,9 +25,9 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
 		
 		System.out.println("Podaj, co chcesz zrobić: \n"
-				+ "Utworzyć ekstensję i zapisać w pliku, wpisz - 1\n"
-				+ "Odczytać ekstensję z pliku, wpisz - 2\n"
-				+ "Zakończyć program, wpisz inną liczbę\n");
+				+ " - Utworzyć ekstensję i zapisać w pliku, wpisz - 1\n"
+				+ " - Odczytać ekstensję z pliku, wpisz - 2\n"
+				+ " - Zakończyć program, wpisz inną liczbę\n");
 		
 		int polecenie;
 		Scanner konsola = new Scanner(System.in);
@@ -81,11 +81,11 @@ public class Main {
 		Measurement m10 = new Measurement(e2, new Date());
 		
 		//public Result(Integer resultNumber, Date checkDate, Employee checkedBy, String comments)
-		Result r1 = new ResultAssay(1,new Date(), e2, "komentarz");
+		Result r1 = new ResultAssay(1,new Date(), e2, "komentarz do zawarości");
 		Result r2 = new Result(2,new Date(), e2);
 		Result r3 = new Result(3,new Date(), e2, "komentarz");
-		Result r4 = new Result(1,new Date(), e2, "");
-		Result r5 = new Result(2,new Date(), e2, "");
+		Result r4 = new Result(1,new Date(), e2);
+		Result r5 = new Result(2,new Date(), e2);
 		
 		r1.addMeasurement(m1);
 		r1.addMeasurement(m2);
