@@ -92,10 +92,8 @@ public class Main {
 		r3.addMeasurement(m3);
 		r5.addMeasurement(m10);
 		
-		
 		//Sample(String nrProby, String nrSerii, String nazwaProby, Date dataPoboru, Date dataProdukcji, Date dataWaznosci, Date dataOceny, 
 		//		Employee wykonalOcene, Date dataZwolnienia, Employee wykonalZwolnienie)
-		
 		Sample s1 = new Sample("ZS/2009/001", "A2005/123A", "Witamina D3", new Date(), new Date(), new Date(), new Date(), e2, new Date(), e3);
 		Sample s2 = new Sample("ZS/2009/002", "A2005/124A", "Witamina B1", new Date(), new Date(), new Date(), new Date(), e3, new Date(), e3);
 		

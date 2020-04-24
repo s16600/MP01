@@ -34,7 +34,7 @@ public class Employee extends MyExtensionPlus {
 	
 	public static Integer sumSalary() {
 		Integer res = 0;
-		List<Employee> employees = null; 
+		//List<Employee> employees = null; 
 
 		// DOKOŃCZYĆ i koniec programu
 		for (Object emp : Employee.getExtent(Employee.class)) {
@@ -49,7 +49,7 @@ public class Employee extends MyExtensionPlus {
 	//Przeciążenie, Employee sumSalary
 	public static Integer sumSalary(String position) {
 		Integer res = 0;
-		List<Employee> employees = null; 
+		//List<Employee> employees = null; 
 
 		// DOKOŃCZYĆ i koniec programu
 		for (Object emp : Employee.getExtent(Employee.class)) {
