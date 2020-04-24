@@ -1,5 +1,5 @@
 
-public class Specification {
+public class Specification extends MyExtensionPlus {
 	private String number;
 	private String name;
 	

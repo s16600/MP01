@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public /*abstract*/ class Sample extends MyExtension {
+public /*abstract*/ class Sample extends MyExtensionPlus {
 	
 	String nrProby;
 	String nrSerii;

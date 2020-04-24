@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public /*abstract*/ class Measurement extends MyExtension {
+public /*abstract*/ class Measurement extends MyExtensionPlus {
 	Employee masurementDoneBy;
 	Date masurmentDate; 
 	

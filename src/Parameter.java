@@ -1,5 +1,5 @@
 
-public class Parameter {
+public class Parameter extends MyExtensionPlus {
 	private String name;
 	private String requirements;
 	private String unit;

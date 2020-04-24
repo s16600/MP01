@@ -2,7 +2,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Employee extends MyExtension /*implements Serializable*/ {
+public class Employee extends MyExtensionPlus {
 	
 	//private static List<Employee> extent = new ArrayList<>();
 	
