@@ -11,6 +11,6 @@ public class Parameter extends MyExtensionPlus {
 	}
 	
 	public String toString(){
-		return this.name + ", " + this.requirements + ", " + this.unit;
+		return this.name + ", " + this.requirements + " " + this.unit;
 	}
 }

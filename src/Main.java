@@ -21,8 +21,8 @@ import java.util.Scanner;
 //Przesłonięcie toString() ResultAssay
 
 //As. zwykla, np. Measurement - Employee
-//As. z atrybutem
-//As. kwalifikowana
+//As. z atrybutem np. Specification - TestedAccording - Sample (klasy są połączone przez TestedAccording)
+//As. kwalifikowana np. Specyfication - Parameter, z kwalifikatorem tekstowym ze skrótem nazwy parametru
 //Kompozycja, np. Result - Measurement lub Measurement - Sample
 
 public class Main {
@@ -104,22 +104,6 @@ public class Main {
 		
 		System.out.println("M1: " + m1.toString());
 		
-		//for (MyExtensionPlus r : r1.getLinks("measurement")) System.out.println(r);
-		
-		//r2.addLink("employee","result",e3);
-		
-		//r1.showLinks("employee",System.out);
-		
-		
-		//System.out.println(e1.getLinks("result"));
-		
-		//for(MyExtensionPlus r : r1.getLinks("employee")) System.out.println(r);
-		//for(MyExtensionPlus r : r2.getLinks("employee")) System.out.println(r);
-		
-		//System.out.println("Lista pracowników:");
-		//Employee.showExtent(Employee.class);
-		
-		//System.out.println(r1.getLinkedObject("employee",e3));
 	}
 	
 	public static void utworzEkstensje() throws Exception {
@@ -162,6 +146,29 @@ public class Main {
 		s1.addResult(r3);
 		s2.addResult(r4);
 		s2.addResult(r5);
+		
+		Specification sp1 = new Specification("SPK001", "Witamina D3", "PL", "B");
+		Specification sp2 = new Specification("SPK002", "Witamina B1", "DE", "A");
+		
+		//public TestedAccording(Date decisionDate, Employee decidedBy, Sample sample, Specification specification)
+		TestedAccording ta1 = new TestedAccording(new Date(), e1, s1, sp1);
+		TestedAccording ta2 = new TestedAccording(new Date(), e2, s2, sp2);
+		
+		Parameter p1 = new Parameter("Zawartość witaminy D3", "380 - 420", "j.m.");
+		Parameter p2 = new Parameter("Czas rozpadu", "NMT 15", "min.");
+		Parameter p3 = new Parameter("Zawartość witaminy B1", "0,9 - 1,1", "mg");
+		Parameter p4 = new Parameter("Czas rozpadu", "NMT 15", "min.");
+		
+		sp1.addParameter(p1, "zawartość");
+		sp1.addParameter(p2, "rozpad");
+		sp2.addParameter(p3, "zawartość");
+		sp2.addParameter(p4, "rozpad");
+		
+		System.out.println("Tested according:");
+		System.out.println(ta1);
+		System.out.println(ta2 + "\n");
+		
+		System.out.println(sp1.getLinkedObject("parameter", "zawartość") + "\n");
 	}
 	
 }
