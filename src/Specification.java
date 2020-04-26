@@ -2,6 +2,8 @@
 public class Specification extends MyExtensionPlus {
 	private String number;
 	private String name;
+	private String country;
+	private String version;
 	
 	public Specification(String number, String name){
 		this.number = number;
@@ -9,7 +11,7 @@ public class Specification extends MyExtensionPlus {
 	}
 	
 	public String toString(){
-		return this.number + " " + this.name;
+		return this.number + "; " + this.name + "; " + this.country + "; " + this.version;
 	}
 	
 }

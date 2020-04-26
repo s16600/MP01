@@ -20,13 +20,19 @@ import java.util.Scanner;
 //Przeciążenie, Employee sumSalary
 //Przesłonięcie toString() ResultAssay
 
+//As. zwykla, np. Measurement - Employee
+//As. z atrybutem
+//As. kwalifikowana
+//Kompozycja, np. Result - Measurement lub Measurement - Sample
+
 public class Main {
 
-	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
+	public static void main(String[] args) throws Exception {
 		
 		System.out.println("Podaj, co chcesz zrobić: \n"
 				+ " - Utworzyć ekstensję i zapisać w pliku, wpisz - 1\n"
 				+ " - Odczytać ekstensję z pliku, wpisz - 2\n"
+				+ " - Utworzyć asocjacje, wpisz - 3\n"
 				+ " - Zakończyć program, wpisz inną liczbę\n");
 		
 		int polecenie;
@@ -42,29 +48,81 @@ public class Main {
 				ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(extentFile)));
 				Employee.writeExtent(out);
 				out.close();
+				
+				System.out.println("Lista pracowników:");
+				Employee.showExtent(Employee.class);
+				System.out.println("Suma wynagrodzeń: " + Employee.sumSalary() +"\n");
+				System.out.println("Lista prób:");
+				Sample.showExtent(Sample.class);
 				break; 
 			case 2:
 				extentFile = new File("Plik1.obj");
 				ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(extentFile)));
 				Employee.readExtent(in);
 				in.close();
+				
+				System.out.println("Lista pracowników:");
+				Employee.showExtent(Employee.class);
+				System.out.println("Suma wynagrodzeń: " + Employee.sumSalary() +"\n");
+				System.out.println("Lista prób:");
+				Sample.showExtent(Sample.class);
+				break;
+			case 3:
+				utworzAsocjacje();
 				break;
 		}
-		
-		System.out.println("Lista pracowników:");
-		Employee.showExtent(Employee.class);
-		System.out.println("Suma wynagrodzeń: " + Employee.sumSalary() +"\n");
-		System.out.println("Lista prób:");
-		Sample.showExtent(Sample.class);
-		
-		//Result.showExtent(Result.class);
-		//Measurement.showExtent(Measurement.class);
-		
+
 		System.out.println("\n*** Koniec programu ***");
 	}
 
+
+	public static void utworzAsocjacje() throws Exception {
+		Employee e1 = new Employee("Jan", "Kowalski", "Laborant", 100);
+		Employee e2 = new Employee("Piotr", "Nowak", "Analityk", 150);
+		Employee e3 = new Employee("Tomasz", "Nicpoń", "Kierownik", 200);
+		
+		Measurement m1 = new MeasurementNumerical(e1, new Date(), 5.51D);
+		Measurement m2 = new MeasurementNumerical(e1, new Date(), 5.00D);
+		Measurement m3 = new Measurement(e1, new Date());
+		
+		Result r1 = new ResultAssay(1,new Date(), e2, "komentarz do zawartości");
+		Result r2 = new Result(2,new Date(), e2);
+		Result r3 = new Result(3,new Date(), e2, "komentarz");
+		Result r4 = new Result(1,new Date(), e2);
+		Result r5 = new Result(2,new Date(), e2);
+		
+		r1.addLink("employee","result",e1);
+		r2.addLink("employee","result",e2);
+		r3.addLink("employee","result",e2);
+		r4.addLink("employee","result",e2);
+		r5.addLink("employee","result",e2);
+		
+		r1.addLink("measurement","result",m1);
+		r1.addLink("measurement","result",m2);
+		
+		System.out.println("R1: " + r1.toString());
+		
+		System.out.println("M1: " + m1.toString());
+		
+		//for (MyExtensionPlus r : r1.getLinks("measurement")) System.out.println(r);
+		
+		//r2.addLink("employee","result",e3);
+		
+		//r1.showLinks("employee",System.out);
+		
+		
+		//System.out.println(e1.getLinks("result"));
+		
+		//for(MyExtensionPlus r : r1.getLinks("employee")) System.out.println(r);
+		//for(MyExtensionPlus r : r2.getLinks("employee")) System.out.println(r);
+		
+		//System.out.println("Lista pracowników:");
+		//Employee.showExtent(Employee.class);
+		
+		//System.out.println(r1.getLinkedObject("employee",e3));
+	}
 	
-	public static void utworzEkstensje() {
+	public static void utworzEkstensje() throws Exception {
 		Employee e1 = new Employee("Jan", "Kowalski", "Laborant", 100);
 		Employee e2 = new Employee("Piotr", "Nowak", "Analityk", 150);
 		Employee e3 = new Employee("Tomasz", "Nicpoń", "Kierownik", 200);
@@ -92,6 +150,8 @@ public class Main {
 		r3.addMeasurement(m3);
 		r5.addMeasurement(m10);
 		
+		//System.out.println(m3);
+		
 		//Sample(String nrProby, String nrSerii, String nazwaProby, Date dataPoboru, Date dataProdukcji, Date dataWaznosci, Date dataOceny, 
 		//		Employee wykonalOcene, Date dataZwolnienia, Employee wykonalZwolnienie)
 		Sample s1 = new Sample("ZS/2009/001", "A2005/123A", "Witamina D3", new Date(), new Date(), new Date(), new Date(), e2, new Date(), e3);
@@ -102,6 +162,6 @@ public class Main {
 		s1.addResult(r3);
 		s2.addResult(r4);
 		s2.addResult(r5);
-		
 	}
+	
 }

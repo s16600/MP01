@@ -9,24 +9,43 @@ public class ResultAssay extends Result {
 	}
 	
 	public String toString() {
-		String text = "No " + resultNumber + ", ASSAY: " + roundAvoid(getValue(),accuracy) 
-					+ ", checked by: " + checkedBy + ((comments!=null)? " ("+comments +")":"") + "\n";
+		String text = null;;
+		try {
+			text = "Result: " + resultNumber + ", ASSAY: " + roundAvoid(getValue(),accuracy)
+				+ ", checked by: " + this.getLinks("employee")[0] + ((comments!=null)? " ("+comments +")":"") + "\n";
+			for (MyExtensionPlus r : this.getLinks("measurement")) {text += "   -- " + r +"\n";}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
 		
+		//String text = "No " + resultNumber + ", ASSAY: " + roundAvoid(getValue(),accuracy) 
+		//			+ ", checked by: " + /*checkedBy +*/ ((comments!=null)? " ("+comments +")":"") + "\n";
+		
+		/*
 		for(Measurement measurement : measurements) {
 			text += "   -- " + measurement +"\n";
 		}
+		*/
 		
 		return text;
 	}
 	
-	public Double getValue() {
+	public Double getValue() throws Exception {
 		Double result = 0D;
 		int counter = 0;
 		
+		for (MyExtensionPlus r : this.getLinks("measurement")) {
+			result += ((MeasurementNumerical) r).getValue();
+			counter++;
+		}
+		
+		/*
 		for (Measurement measurement : measurements) {
 			result += ((MeasurementNumerical) measurement).getValue();
 			counter++;
 		}
+		*/
 		
 		if (counter>0) {
 			return result/counter;

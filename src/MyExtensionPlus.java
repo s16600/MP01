@@ -37,6 +37,17 @@ public abstract class MyExtensionPlus extends MyExtension implements Serializabl
 		addLink(roleName, reverseRoleName, targetObject, targetObject);
 	}
 	
+	/*
+	public void addLinkManyToMany(String roleName, String reverseRoleName, MyExtensionPlus targetObject) {
+		addLink(roleName, reverseRoleName, targetObject, targetObject);
+	}
+	
+	public void addLinkOneToMany(String roleName, String reverseRoleName, MyExtensionPlus targetObject) {
+		//dodać sprawdzanie, czy link nie został już utworzony, blokowanie dodania kilku pracowników do pomiaru?? czy potrzebne
+		addLinkManyToMany(roleName, reverseRoleName, targetObject);
+	}
+	*/
+	
 	public void addPart(String roleName, String reverseRoleName, MyExtensionPlus partObject) throws Exception {
 		if(allParts.contains(partObject)) {
 			throw new Exception("The part is already connected to a whole!");

@@ -9,7 +9,14 @@ public class MeasurementNumerical extends Measurement {
 	}
 	
 	public String toString() {
-		return "Measurement: " + value + ", by: " + masurementDoneBy; 
+		try {
+			return "Measurement: " + value + ", by: " + this.getLinks("employee")[0];
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return null;
 	}
 	
 	public void setValue(Double value) {

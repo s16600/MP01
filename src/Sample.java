@@ -10,29 +10,39 @@ public /*abstract*/ class Sample extends MyExtensionPlus {
 	Date dataPoboru;
 	Date dataProdukcji;
 	Date dataWaznosci;
-	List<Result> results;
+	//List<Result> results;
 	Ocena ocena;
 	Date dataOceny;
-	Employee wykonalOcene;
+	//Employee wykonalOcene;
 	Status status;
 	Date dataZwolnienia;
-	Employee wykonalZwolnienie;
+	//Employee wykonalZwolnienie;
 	
 	public enum Ocena {Brak, Odpowiada, Odpowiada_w_przebadanych_parametrach, Nie_odpowiada};
 	public enum Status {Brak, Zwolniona, Odrzucona}; 
 	
 	public String toString() {
-		String text = "Sample: " + nrProby + ", " + nrSerii + ", evaluated by: " + wykonalOcene +"\n";
+		String text = null;
 		
+		try {
+			text = "Sample: " + nrProby + ", " + nrSerii + ", evaluated by: " + this.getLinks("evaluatedBy")[0] +"\n";
+			for (MyExtensionPlus r : this.getLinks("result")) text += " - " + r.toString() +"\n";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		/*
 		for (Result result : results) {
 			text += " - " + result.toString() +"\n";
 		}
+		*/
 		
 		return text;
 	}	
 	
 	public Sample() {
-		this.results = new ArrayList<>();
+		//this.results = new ArrayList<>();
 	}
 	
 	public Sample(String nrProby, String nrSerii, String nazwaProby, Date dataPoboru, Date dataProdukcji, Date dataWaznosci, Date dataOceny, 
@@ -44,21 +54,26 @@ public /*abstract*/ class Sample extends MyExtensionPlus {
 		this.dataPoboru = dataPoboru;
 		this.dataProdukcji = dataProdukcji;
 		this.dataWaznosci = dataWaznosci;
-		this.results = new ArrayList<>();
+		//this.results = new ArrayList<>();
 		this.ocena = Sample.Ocena.Brak;
 		this.dataOceny = dataOceny;
-		this.wykonalOcene = wykonalOcene;
+		//this.wykonalOcene = wykonalOcene;
+		this.addLink("evaluatedBy", "sample", wykonalOcene);
 		this.status = Sample.Status.Brak;
 		this.dataZwolnienia = dataZwolnienia;
-		this.wykonalZwolnienie = wykonalZwolnienie;
+		//this.wykonalZwolnienie = wykonalZwolnienie;
+		this.addLink("releasedBy", "sample", wykonalZwolnienie);
 	}
 	
-	public void addResult(Result result) {
-		this.results.add(result);
+	public void addResult(Result result) throws Exception {
+		//this.results.add(result);
+		this.addPart("result","sample",result);
 	}
 	
+	/*
 	public void removeResult(Result result) {
 		this.results.remove(result);
 	}
+	*/
 
 }

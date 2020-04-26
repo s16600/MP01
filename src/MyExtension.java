@@ -8,16 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class MyExtension implements Serializable {
-	
-	/*
-	private static List<MyExtension> extent = new ArrayList<>();
-
-	public MyExtension(){
-		add(this);
-	}
-	*/
-	
-	//wersja bardziej uniwersalna
 	private static Map<Class, List<MyExtension>> allExtents = new Hashtable<>();
 	
 	public MyExtension() {
@@ -33,17 +23,6 @@ public abstract class MyExtension implements Serializable {
 		}
 		extent.add(this); 
 	}
-	
-	/*
-	protected static void add(MyExtension myextension) {
-		extent.add(myextension);
-	}
-	
-	
-	protected static void remove(MyExtension myextension) {
-		extent.remove(myextension); 
-	}
-	*/
 	
 	public static void writeExtent(ObjectOutputStream stream) throws IOException {
 		stream.writeObject(allExtents);
@@ -82,14 +61,5 @@ public abstract class MyExtension implements Serializable {
 		}
 		return (List<T>) extent;
 	}
-	
-	/*
-	public static void showExtent() {
-		System.out.println("Extent of the class: " + MyExtension.class.getName());
-		for (MyExtension myextension : extent) {
-			System.out.println(myextension);
-		}	
-	}
-	*/
 	
 }
