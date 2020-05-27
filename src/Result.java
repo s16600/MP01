@@ -32,18 +32,19 @@ public /*abstract*/ class Result extends MyExtensionPlus {
 		return text;
 	}
 	
-	public Result(Integer resultNumber, Date checkDate, Employee checkedBy, String comments) {
+	public Result(Sample sample, Integer resultNumber, Date checkDate, Employee checkedBy, String comments) {
 		this.resultNumber = resultNumber;
 		//this.measurements = new ArrayList<>();
 		this.checked = Result.Checked.Yes;
 		this.checkDate = checkDate;
 		//this.checkedBy = checkedBy;
 		this.addLink("employee","result", checkedBy);
+		this.addLink("sample","result", sample);
 		this.comments = comments;
 	}
 	
-	public Result(Integer resultNumber, Date checkDate, Employee checkedBy) {
-		this(resultNumber, checkDate, checkedBy, null);
+	public Result(Sample sample, Integer resultNumber, Date checkDate, Employee checkedBy) {
+		this(sample, resultNumber, checkDate, checkedBy, null);
 	}
 	
 	public void addMeasurement(Measurement measurement) throws Exception {

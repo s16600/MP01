@@ -20,10 +20,10 @@ import java.util.Scanner;
 //Przeciążenie, Employee sumSalary
 //Przesłonięcie toString() ResultAssay
 
-//As. zwykla, np. Measurement - Employee
+//As. zwykla, np. Measurement - Employee (jedenn E może wykonać wiele M)
 //As. z atrybutem np. Specification - TestedAccording - Sample (klasy są połączone przez TestedAccording)
 //As. kwalifikowana np. Specyfication - Parameter, z kwalifikatorem tekstowym ze skrótem nazwy parametru
-//Kompozycja, np. Result - Measurement lub Measurement - Sample
+//Kompozycja, np.  Result - Measurement
 
 public class Main {
 
@@ -80,16 +80,19 @@ public class Main {
 		Employee e1 = new Employee("Jan", "Kowalski", "Laborant", 100);
 		Employee e2 = new Employee("Piotr", "Nowak", "Analityk", 150);
 		Employee e3 = new Employee("Tomasz", "Nicpoń", "Kierownik", 200);
+
+		Sample s1 = new Sample("ZS/2009/001", "A2005/123A", "Witamina D3", new Date(), new Date(), new Date(), new Date(), e2, new Date(), e3);
+		Sample s2 = new Sample("ZS/2009/002", "A2005/124A", "Witamina B1", new Date(), new Date(), new Date(), new Date(), e3, new Date(), e3);
 		
-		Measurement m1 = new MeasurementNumerical(e1, new Date(), 5.51D);
-		Measurement m2 = new MeasurementNumerical(e1, new Date(), 5.00D);
-		Measurement m3 = new Measurement(e1, new Date());
+		Result r1 = new ResultAssay(s1, 1,new Date(), e2, "komentarz do zawartości");
+		Result r2 = new Result(s1, 2,new Date(), e2);
+		Result r3 = new Result(s1, 3,new Date(), e2, "komentarz");
+		Result r4 = new Result(s2, 1,new Date(), e2);
+		Result r5 = new Result(s2, 2,new Date(), e2);
 		
-		Result r1 = new ResultAssay(1,new Date(), e2, "komentarz do zawartości");
-		Result r2 = new Result(2,new Date(), e2);
-		Result r3 = new Result(3,new Date(), e2, "komentarz");
-		Result r4 = new Result(1,new Date(), e2);
-		Result r5 = new Result(2,new Date(), e2);
+		Measurement m1 = new MeasurementNumerical(r1, e1, new Date(), 5.51D);
+		Measurement m2 = new MeasurementNumerical(r1, e1, new Date(), 5.00D);
+		Measurement m3 = new Measurement(r2, e1, new Date());
 		
 		r1.addLink("employee","result",e1);
 		r2.addLink("employee","result",e2);
@@ -101,9 +104,7 @@ public class Main {
 		r1.addLink("measurement","result",m2);
 		
 		System.out.println("R1: " + r1.toString());
-		
 		System.out.println("M1: " + m1.toString());
-		
 	}
 	
 	public static void utworzEkstensje() throws Exception {
@@ -111,41 +112,47 @@ public class Main {
 		Employee e2 = new Employee("Piotr", "Nowak", "Analityk", 150);
 		Employee e3 = new Employee("Tomasz", "Nicpoń", "Kierownik", 200);
 		
-		Measurement m1 = new MeasurementNumerical(e1, new Date(), 5.51D);
-		Measurement m2 = new MeasurementNumerical(e1, new Date(), 5.00D);
-		Measurement m3 = new Measurement(e1, new Date());
-		Measurement m4 = new Measurement(e1, new Date());
-		Measurement m5 = new Measurement(e1, new Date());
-		Measurement m6 = new Measurement(e2, new Date());
-		Measurement m7 = new Measurement(e2, new Date());
-		Measurement m8 = new Measurement(e2, new Date());
-		Measurement m9 = new Measurement(e2, new Date());
-		Measurement m10 = new Measurement(e2, new Date());
+		Sample s1 = new Sample("ZS/2009/001", "A2005/123A", "Witamina D3", new Date(), new Date(), new Date(), new Date(), e2, new Date(), e3);
+		Sample s2 = new Sample("ZS/2009/002", "A2005/124A", "Witamina B1", new Date(), new Date(), new Date(), new Date(), e3, new Date(), e3);
+		
+		Result r1 = new ResultAssay(s1, 1,new Date(), e2, "komentarz do zawarości");
+		Result r2 = new Result(s1, 2,new Date(), e2);
+		Result r3 = new Result(s1, 3,new Date(), e2, "komentarz");
+		Result r4 = new Result(s2, 1,new Date(), e2);
+		Result r5 = new Result(s2, 2,new Date(), e2);
+		
+		Measurement m1 = new MeasurementNumerical(r1, e1, new Date(), 5.51D);
+		Measurement m2 = new MeasurementNumerical(r1, e1, new Date(), 5.00D);
+		Measurement m3 = new Measurement(r3, e1, new Date());
+		//Measurement m4 = new Measurement(e1, new Date());
+		//Measurement m5 = new Measurement(e1, new Date());
+		//Measurement m6 = new Measurement(e2, new Date());
+		//Measurement m7 = new Measurement(e2, new Date());
+		//Measurement m8 = new Measurement(e2, new Date());
+		//Measurement m9 = new Measurement(e2, new Date());
+		Measurement m10 = new Measurement(r5, e2, new Date());
 		
 		//public Result(Integer resultNumber, Date checkDate, Employee checkedBy, String comments)
-		Result r1 = new ResultAssay(1,new Date(), e2, "komentarz do zawarości");
-		Result r2 = new Result(2,new Date(), e2);
-		Result r3 = new Result(3,new Date(), e2, "komentarz");
-		Result r4 = new Result(1,new Date(), e2);
-		Result r5 = new Result(2,new Date(), e2);
-		
+
+		/*
 		r1.addMeasurement(m1);
 		r1.addMeasurement(m2);
 		r3.addMeasurement(m3);
 		r5.addMeasurement(m10);
+		*/
 		
 		//System.out.println(m3);
 		
 		//Sample(String nrProby, String nrSerii, String nazwaProby, Date dataPoboru, Date dataProdukcji, Date dataWaznosci, Date dataOceny, 
 		//		Employee wykonalOcene, Date dataZwolnienia, Employee wykonalZwolnienie)
-		Sample s1 = new Sample("ZS/2009/001", "A2005/123A", "Witamina D3", new Date(), new Date(), new Date(), new Date(), e2, new Date(), e3);
-		Sample s2 = new Sample("ZS/2009/002", "A2005/124A", "Witamina B1", new Date(), new Date(), new Date(), new Date(), e3, new Date(), e3);
 		
+		/*
 		s1.addResult(r1);
 		s1.addResult(r2);
 		s1.addResult(r3);
 		s2.addResult(r4);
 		s2.addResult(r5);
+		*/
 		
 		Specification sp1 = new Specification("SPK001", "Witamina D3", "PL", "B");
 		Specification sp2 = new Specification("SPK002", "Witamina B1", "DE", "A");

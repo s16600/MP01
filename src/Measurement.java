@@ -16,9 +16,10 @@ public /*abstract*/ class Measurement extends MyExtensionPlus {
 		return null;
 	}
 	
-	Measurement(Employee masurementDoneBy, Date masurmentDate) {
+	Measurement(Result result, Employee masurementDoneBy, Date masurmentDate) {
 		//this.masurementDoneBy = masurementDoneBy;
 		this.addLink("employee","measurement", masurementDoneBy);
+		this.addLink("result", "measurement", result);
 		this.masurmentDate = masurmentDate;
 	}
 }

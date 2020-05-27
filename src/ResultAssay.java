@@ -4,8 +4,8 @@ import java.util.Date;
 public class ResultAssay extends Result {
 	private static int accuracy=2; 
 
-	public ResultAssay(Integer resultNumber, Date checkDate, Employee checkedBy, String comments) {
-		super(resultNumber, checkDate, checkedBy, comments);
+	public ResultAssay(Sample sample, Integer resultNumber, Date checkDate, Employee checkedBy, String comments) {
+		super(sample, resultNumber, checkDate, checkedBy, comments);
 	}
 	
 	public String toString() {

@@ -3,8 +3,8 @@ import java.util.Date;
 public class MeasurementNumerical extends Measurement {
 	private Double value;
 	
-	public MeasurementNumerical(Employee masurementDoneBy, Date masurmentDate, Double value){
-		super(masurementDoneBy, masurmentDate);
+	public MeasurementNumerical(Result result, Employee masurementDoneBy, Date masurmentDate, Double value){
+		super(result, masurementDoneBy, masurmentDate);
 		this.value = value;
 	}
 	
